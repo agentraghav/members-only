@@ -1,10 +1,11 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
-const User = require('../models/user');
 const { passport } = require('passport');
 
+const User = require('../models/user');
+
 exports.userRegisterGet = (req, res, next) => {
-  res.render('register');
+  res.render('register', { errors: undefined });
 };
 
 exports.userRegisterPost = (req, res, next) => {
@@ -37,5 +38,9 @@ exports.userRegisterPost = (req, res, next) => {
 };
 
 exports.userLogInGet = (req, res, next) => {
+  res.render('login');
+};
+
+exports.userLogInPost = (req, res, next) => {
   res.render('login');
 };
