@@ -1,7 +1,6 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
-const { passport } = require('passport');
-
+const passport = require('../passport-config');
 const User = require('../models/user');
 
 exports.userRegisterGet = (req, res, next) => {
@@ -41,6 +40,8 @@ exports.userLogInGet = (req, res, next) => {
   res.render('login');
 };
 
-exports.userLogInPost = (req, res, next) => {
-  res.render('login');
-};
+exports.userLogInPost = passport.authenticate('local', {
+  failureRedirect: '/log-in',
+  successRedirect: '/',
+  failureFlash: true,
+});
