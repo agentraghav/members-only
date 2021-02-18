@@ -1,6 +1,8 @@
 <html>
   <body>
-    <%- include('header') %>
+    <%- include('header') %> <% if (errors) { %> <% errors.forEach(error => { %>
+    <div class="alert alert-danger" role="alert"><%= error.msg %></div>
+    <% }) %> <% } %>
     <div class="container">
       <form action="/register" method="POST">
         <div class="form-group">
