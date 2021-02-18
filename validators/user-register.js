@@ -1,6 +1,6 @@
 const { body } = require('express-validator');
 
-exports.register_validation = (req, res, next) => [
+exports.register_validation = [
   body('name')
     .trim()
     .isLength({ min: 1 })
