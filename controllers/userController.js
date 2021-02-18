@@ -25,6 +25,7 @@ exports.userRegisterPost = (req, res, next) => {
           membership: false,
         }).save((err) => {
           if (err) {
+            console.log(err);
             return next(err);
           }
           passport.authenticate('local')(req, res, () => {
