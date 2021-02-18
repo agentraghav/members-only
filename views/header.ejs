@@ -9,6 +9,7 @@
     </div>
 
     <ul class="nav navbar-nav navbar-right">
+      <% if (!currentUser) { %>
       <li>
         <a href="/register"
           ><span class="glyphicon glyphicon-user"></span> Sign Up</a
@@ -19,6 +20,19 @@
           ><span class="glyphicon glyphicon-log-in"></span> Login</a
         >
       </li>
+      <% } else if (currentUser) { %> <% if (!currentUser.membership) { %>
+      <button type="button" class="btn btn-secondary">
+        <a href="/join"> Join The Club </a>
+      </button>
+      <% } %> <% if (currentUser.membership && !currentUser.admin) { %>
+      <button type="button" class="btn btn-secondary">
+        <a href="/admin"> Become An Admin </a>
+      </button>
+      <% } %>
+      <button type="button" class="btn btn-secondary" href="/logout">
+        Log Out
+      </button>
+      <% } %>
     </ul>
   </div>
 </nav>
