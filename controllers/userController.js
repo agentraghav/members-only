@@ -20,8 +20,7 @@ exports.userRegisterPost = (req, res, next) => {
         const user = new User({
           username: username,
           name: name,
-          password,
-          hashedPass,
+          password: hashedPass,
           membership: false,
         }).save((err) => {
           if (err) {
@@ -41,8 +40,11 @@ exports.userLogInGet = (req, res, next) => {
   res.render('login');
 };
 
-exports.userLogInPost = passport.authenticate('local', {
-  failureRedirect: '/log-in',
-  successRedirect: '/',
-  failureFlash: true,
-});
+exports.userLogInPost =
+  ('/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true,
+    passReqToCallback: true,
+  }));
