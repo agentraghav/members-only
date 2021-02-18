@@ -14,6 +14,13 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 
+// setup mongo database
+
+const mongoDb = process.env.MONGO_URI;
+mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'mongo connection error'));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
