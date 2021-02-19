@@ -34,3 +34,20 @@ exports.posts_post = (req, res, next) => {
 exports.create_get = (req, res, next) => {
   res.render('create-message', { errors: undefined });
 };
+
+exports.create_pos = (req, res, next) => {
+  const errors = validationResult(req);
+  const { title, body } = req.body;
+  const { _id } = req.user;
+  if (!errors.isEmpty()) {
+    res.render('create-message', { errors: errors.array() });
+  } else {
+    const post = new Post({
+      title: title,
+      body: body,
+      author: _id,
+    }).save((err) => {
+      err ? next(err) : res.redirect('/');
+    });
+  }
+};
