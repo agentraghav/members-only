@@ -1,0 +1,38 @@
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+/>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Members Only</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <% if (!currentUser) { %>
+      <li>
+        <a href="/register"
+          ><span class="glyphicon glyphicon-user"></span> Sign Up</a
+        >
+      </li>
+      <li>
+        <a href="/login"
+          ><span class="glyphicon glyphicon-log-in"></span> Login</a
+        >
+      </li>
+      <% } else if (currentUser) { %> <% if (!currentUser.membership) { %>
+      <button type="button" class="btn btn-secondary">
+        <a href="/join"> Become the member </a>
+      </button>
+      <% } %> <% if (currentUser.membership && !currentUser.admin) { %>
+      <button type="button" class="btn btn-secondary">
+        <a href="/admin"> Become An Admin </a>
+      </button>
+      <% } %>
+      <button type="button" class="btn btn-secondary" href="/logout">
+        Log Out
+      </button>
+      <% } %>
+    </ul>
+  </div>
+</nav>
