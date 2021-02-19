@@ -73,3 +73,7 @@ exports.logout = (req, res) => {
   req.logout();
   res.redirect('/');
 };
+
+exports.authenticated = (req, res, next) => {
+  req.isAuthenticated() ? next() : res.redirect('/');
+};

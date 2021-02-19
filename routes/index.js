@@ -16,18 +16,22 @@ router.get('/login', user_controller.userLogInGet);
 
 router.post('/login', user_controller.userLogInPost);
 
-router.get('/join', authenticated, user_controller.join_get);
+router.get('/join', user_controller.authenticated, user_controller.join_get);
 router.post(
   '/join',
-  authenticated,
+  user_controller.authenticated,
   user_validation.joinValidation,
   user_controller.join_post
 );
 
-router.get('/create-message', authenticated, post_controller.create_get);
+router.get(
+  '/create-message',
+  user_controller.authenticated,
+  post_controller.create_get
+);
 router.post(
   '/create-message',
-  authenticated,
+  user_controller.authenticated,
   post_validation.post_validation,
   post_controller.create_post
 );
