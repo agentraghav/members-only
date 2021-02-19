@@ -40,6 +40,7 @@ exports.create_post = (req, res, next) => {
   const { title, body } = req.body;
   const { _id } = req.user;
   if (!errors.isEmpty()) {
+    console.log(errors.array());
     res.render('create-message', { errors: errors.array() });
   } else {
     const post = new Post({
