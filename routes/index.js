@@ -29,11 +29,14 @@ router.get(
   user_controller.authenticated,
   post_controller.create_get
 );
+
 router.post(
   '/create-message',
   user_controller.authenticated,
   post_validation.post_validation,
   post_controller.create_post
 );
+
+router.get('/', post_controller.posts_get);
 
 module.exports = router;
