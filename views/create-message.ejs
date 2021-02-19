@@ -1,33 +1,31 @@
-<html>
-  <%- include('header')%>
-  <div class="container">
-    <%- include('header') %> <% if (errors) { %> <% errors.forEach(error => { %>
-        <div class="alert alert-danger" role="alert"><%= error.msg %></div>
-        <% }) %> <% } %>
-    <form action="/create-message" method="POST">
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input
-          type="text"
-          class="form-control"
-          id="title"
-          name="title"
-          placeholder="Three man in the boat"
-        />
-      </div>
+<%- include('header')%>
+<div class="container">
+  <% if (errors) { %> <% errors.forEach(error => { %>
+  <div class="alert alert-danger" role="alert"><%= error.msg %></div>
+  <% }) %> <% } %>
+  <form action="/create-message" method="POST">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        placeholder="Three man in the boat"
+      />
+    </div>
 
-      <div class="form-group">
-        <label for="body">Write your message</label>
-        <textarea
-          type="text"
-          class="form-control"
-          id="body"
-          name="body"
-          cols="30" rows="10"
-        >
-      </div>
-      <button type="submit" class="btn btn-primary">Post</button>
-    </form>
-  </div>
-  <%- include('footer')%>
-</html>
+    <div class="form-group">
+      <label for="body">Write your message</label>
+      <textarea
+        class="form-control"
+        id="body"
+        name="body"
+        cols="30"
+        rows="10"
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Post</button>
+  </form>
+</div>
+<%- include('footer')%>

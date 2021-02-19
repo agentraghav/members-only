@@ -39,4 +39,5 @@ router.post(
 
 router.get('/', post_controller.posts_get);
 
+router.get('/logout', user_controller.logout);
 module.exports = router;

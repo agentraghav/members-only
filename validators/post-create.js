@@ -8,5 +8,5 @@ exports.post_validation = [
     .isLength({ min: 1 })
     .withMessage('Enter title.')
     .isAlphanumeric(),
-  body('body').not().isEmpty().trim().escape(),
+  body('body').trim().escape(),
 ];
