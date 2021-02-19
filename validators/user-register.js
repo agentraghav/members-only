@@ -1,4 +1,4 @@
-const { body } = require('express-validator');
+const { body, check } = require('express-validator');
 const User = require('../models/user');
 
 exports.register_validation = [
@@ -40,5 +40,14 @@ exports.register_validation = [
       } else {
         return true;
       }
+    }),
+];
+
+exports.joinValidation = [
+  check('secretPass', 'Not the secret password')
+    .trim()
+    .escape()
+    .custom((value) => {
+      return value === '907-9765';
     }),
 ];

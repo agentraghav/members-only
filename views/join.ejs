@@ -1,0 +1,17 @@
+<html>
+  <%- include('header')%>
+  <div class="container">
+    <%- include('header') %> <% if (errors) { %> <% errors.forEach(error => { %>
+    <div class="alert alert-danger" role="alert"><%= error.msg %></div>
+    <% }) %> <% } %>
+    <form action="/join" method="POST">
+      <div class="form-group">
+        <label for="secretPass">Enter secret passcode</label>
+        <input type="text" class="form-control" id="secret" name="secretPass" />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <%- include('footer')%>
+</html>

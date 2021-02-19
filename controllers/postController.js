@@ -35,7 +35,7 @@ exports.create_get = (req, res, next) => {
   res.render('create-message', { errors: undefined });
 };
 
-exports.create_pos = (req, res, next) => {
+exports.create_post = (req, res, next) => {
   const errors = validationResult(req);
   const { title, body } = req.body;
   const { _id } = req.user;

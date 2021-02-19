@@ -48,3 +48,23 @@ exports.userLogInPost =
     failureFlash: true,
     passReqToCallback: true,
   }));
+
+exports.join_get = (req, res, next) => {
+  res.render('join', { errors: undefined });
+};
+
+exports.join_post = (req, res, next) => {
+  const errors = validationResult(req);
+  const { _id } = req.user;
+  if (!errors.isEmpty()) {
+    res.render('join', { errors: errors.array() });
+  } else {
+    User.findByIdAndUpdate(_id, { membership: true }, (err, result) => {
+      if (err) {
+        return next(err);
+      } else {
+        res.redirect('/');
+      }
+    });
+  }
+};
